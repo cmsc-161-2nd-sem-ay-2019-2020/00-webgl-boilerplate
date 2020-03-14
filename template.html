@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebGL Template</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="ceposerio@up.edu.ph">
+    <meta name="description" content="a template for CMSC161 WebGL projects">
+
+    <!-- load all scripts needed for content creation -->
+
+    <!-- SHADERS -->
+    <script id="vertex-shader" type="notjs">#version 300 es
+      in vec4 a_position;
+
+      void main() {
+        gl_Position = a_position;
+        gl_PointSize = 10.0;
+      }
+
+    </script>
+
+    <script id="fragment-shader" type="notjs">#version 300 es
+      precision mediump float;
+
+      out vec4 out_color;
+
+      void main() {
+        out_color = vec4(1.0, 0.0, 0.0, 1.0);
+      }
+
+    </script>
+
+    <!-- WebGL SETUP LIBRARIES -->
+    <script src="./utils/gl-matrix.js"></script>
+    <script src="./utils/webgl-debug.js"></script>
+    <script src="./utils/webgl-utils.js"></script>
+    <script src="./utils/webgl-init.js"></script>
+    <script src="./utils/html-init.js"></script>
+    <script src="./main.js"></script>
+
+  </head>
+  
+  <body>
+    <canvas id="master" height="512" width="512">
+      Your browser does not support the HTML5 canvas element.
+    </canvas>
+  </body>
+</html>
