@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WebGL Template</title>
+    <title>Scene</title>
     <meta charset="UTF-8">
     <meta name="author" content="ceposerio@up.edu.ph">
-    <meta name="description" content="a template for CMSC161 WebGL projects">
+    <meta name="description" content="a template for webgl applications in CMSC161">
 
     <!-- load all scripts needed for content creation -->
 
     <!-- SHADERS -->
     <script id="vertex-shader" type="notjs">#version 300 es
-      in vec4 a_position;
+      uniform mat4 u_model;
+      uniform mat4 u_view;
+      uniform mat4 u_proj;
+      in vec3 a_position;
 
       void main() {
-        gl_Position = a_position;
+        gl_Position = u_proj * u_view * u_model * vec4(a_position, 1.0);
         gl_PointSize = 10.0;
       }
 
@@ -21,11 +24,11 @@
 
     <script id="fragment-shader" type="notjs">#version 300 es
       precision mediump float;
-
+      uniform vec3 u_color;
       out vec4 out_color;
 
       void main() {
-        out_color = vec4(1.0, 0.0, 0.0, 1.0);
+        out_color = vec4(u_color, 1.0);
       }
 
     </script>
